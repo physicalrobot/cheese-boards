@@ -1,7 +1,7 @@
 const { sequelize } = require('./db');
 const { User, Board, Cheese } = require('./models/index')
 
-describe('Band and Musician Models', () => {
+describe('User and Board,Cheese Models', () => {
     /**
      * Runs the code prior to all tests
      */
@@ -83,14 +83,13 @@ describe('Band and Musician Models', () => {
             include: [{ model: Board, as: 'boards' }]
         });
 
-
-
+        const cheeses4one = await boards[0].getCheeses()
 
         expect(users.length).toBe(2)
         expect(boards.length).toBe(1)
         expect(cheese.length).toBe(2)
 
-        // expect(boards[0].cheeses[0].title).toBe("Swiss")
+        expect(cheeses4one.length).toBe(2)
 
     })
 })
